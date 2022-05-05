@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <title>my_account</title>
+
+    <style>
+
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --very-light-pink: #9c9999;
+            --text-input-field: #F7F7F7;
+            --hospital-green: #ACD9B2;
+            --sm: 14px;
+            --md: 16px;
+            --lg: 18px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        .login {
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+            .form-container {
+                display: grid;
+                width: auto;
+                /* border-radius: 32px; */
+                box-shadow: 3px 3px 3px 2px rgba(100, 100, 100, 0.3);
+                justify-items: center;
+                overflow: hidden;
+                position: relative;
+            }
+
+                .nav-main {
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.046805);
+                    display: flex;
+                    width: 100%;
+                    margin-bottom: 12px;
+                    padding: 16px 20px;
+                    box-sizing: border-box;
+                    /* background: red; */
+                    /* overflow: hidden; */
+                    justify-content: space-between;
+                }
+
+                    .nav-left {
+                        display: flex;
+                        gap: 40px;
+                    }
+
+                        .menu {
+                            width: 24px;
+                            /* margin-bottom: 48px; */
+                            /* justify-self: center; */
+                            /* display: none; */
+                        }
+
+                        .logo {
+                            width: 96px;
+                            /* margin-bottom: 48px; */
+                            justify-self: center;
+                            display: inherit;
+                        }
+
+                        .categories--nav {
+                            display: none;
+                        }
+                    
+                    
+                    .nav-right {
+                        display: flex;
+                        gap: 40px;
+                    }
+                        
+                        .nav-right__signin {
+                            display: none;
+                            color: var(--hospital-green);
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        /* .cart {
+                            width: 24px;
+                            margin-bottom: 48px;
+                            justify-self: center;
+                            display: none;
+                        } */
+
+                        .cart-notified {
+                            width: 28px;
+                            /* margin-bottom: 48px; */
+                            /* justify-self: center; */
+                            /* display: none; */
+                        }
+
+                .content {
+                    display: grid;
+                    justify-items: center;
+                }
+
+
+                .search-box {
+                    background-color: var(--text-input-field);
+                    font-family: 'Quicksand';
+                    font-style: normal;
+                    font-size: var(--md);
+                    width: 339px;
+                    border: none;
+                    border-radius: 10px;
+                    height: 42px;
+                    margin-bottom: 16px;
+                    color: #797979;
+                    text-align: center;
+                }
+                    
+                
+                .categories {
+                    width: 348px;
+                    display: flex;
+                    justify-content: space-between;            
+                }
+
+                    .category {
+                        width: auto;
+                    }
+
+                        .category-type {
+                            margin: 4px 12px;
+                            color: #C7C7C7;
+                            font-size: var(--md);
+                            font-weight: 500;
+                        }
+
+
+                    .category--selected {
+                        outline: 1px solid var(--hospital-green);
+                        border-radius: 10px;
+                    }
+                    
+
+                .main-content {
+                    display: grid;
+                    max-height: 568px;
+                    justify-items: center;                
+                    padding: 22px 18px;
+                    padding-top: 0px;
+                }
+
+
+                    .sort {
+                        margin: 24px 0px;
+                    }
+
+                        .sort-p {
+                            font-size: var(--sm);
+                            color: black;
+                            font-weight: bold;
+                            display: inline;
+                            margin: 0;
+                        }
+
+                        .sort-select {
+                            border: 0;
+                            background: none;
+                            font-size: var(--sm);
+                            font-family: 'Quicksand', sans-serif;
+                            font-weight: 400;
+                            cursor: pointer;
+                        }
+
+
+                    .catalogue {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 20px;
+                        grid-auto-flow: row;
+                    }
+
+                        .catalogue-item {
+                            /* background-color: red; */
+                            /* overflow: hidden; */
+                            /* display: grid; */
+                            display: grid;
+                            position: relative;
+                        }
+                            
+                            .catalogue-item__header {
+                                display: grid;
+                                position: relative;
+                            }
+
+                                .cart-item--removed{
+                                    background-color: rgba(255, 255, 255, 0.8);
+                                    width: calc(100% - 8px);
+                                    height: 40px;
+                                    position: absolute;
+                                    z-index: 1;
+                                    align-self: center;
+                                    justify-self: center;
+                                    border-radius: 10px;
+                                    display: grid;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                .cart-item__text--removed {
+                                    font-size: var(--sm);
+                                    font-weight: 500;
+                                    margin: 0;
+                                    padding: 0;
+                                    
+                                }
+
+                                .catalogue-item__image {
+                                    width: 164px;
+                                    height: 164px;
+                                    border-radius: 20px;
+                                    filter: drop-shadow(0px 0px 15px rgba(199, 199, 199, 0.5));
+                                    
+                                }
+
+                            .catalogue-item__footer {
+                                display: grid;
+                                grid-auto-flow: column;
+                                justify-content: space-between;
+                                align-items: end;
+                            }
+
+                                .catalogue-item__info{
+                                    display: grid;
+                                    grid-auto-flow: row;
+                                }
+
+                                    .catalogue-item__price {
+                                        font-size: var(--md);
+                                        font-weight: 700;
+                                        color: #404040;
+                                        font-family: 'Roboto', sans-serif;
+                                        margin-top: 11px;
+                                        margin-bottom: 2px;
+                                        /* justify-self: left; */
+                                    }
+
+                                    .catalogue-item__name {
+                                        font-size: var(--sm);
+                                        font-weight: 400;
+                                        color: #797979;;
+                                        margin: 0;
+                                        /* justify-self: left; */
+                                    }
+
+
+                                .catalogue-item__cart {
+                                    width: 40px;
+                                    margin: 0;
+                                    /* justify-self: right; */
+                                    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.15));
+                                }
+
+                                .catalogue-item__cart-added {
+                                    width: 40px;
+                                    margin: 0;
+                                    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.15));
+                                    /* align-self: right; */
+                                }                   
+
+
+                    /* .title {
+                        font-size: var(--lg);
+                        margin-top: 0px;
+                        margin-bottom: 48px;
+                        text-align: center;
+                        justify-self: left;
+                    } */
+
+                    /* .subtitle {
+                        color: var(--very-light-pink);
+                        font-size: var(--md);
+                        font-weight: 300;
+                        margin-top: 0;
+                        margin-bottom: 32px;
+                        text-align: center;
+                    } */
+
+
+                    /* .form {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                    } */
+
+                        /* .label {
+                            font-size: var(--sm);
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        } */
+
+                        /* .input {
+                            background-color: var(--text-input-field);
+                            border: none;
+                            border-radius: 10px;
+                            height: 28px;
+                            font-size: var(--md);
+                            padding: 8px;
+                            margin-bottom: 26px;
+                            color: #797979;
+                        } */
+
+                        /* .info {
+                            font-size: var(--md);
+                            margin-top: 0;
+                            margin-bottom: 42px;
+                            color: #797979;
+                        } */
+
+
+                    /* .primary-button {
+                        background-color: var(--hospital-green);
+                        border-radius: 8px;
+                        border: none;
+                        color: var(--white);
+                        width: 100%;
+                        cursor: pointer;
+                        font-size: var(--md);
+                        font-weight: bold;
+                        height: 44px;
+                    } 
+                    */
+
+                        /* .brand-link {
+                            text-decoration: none;
+                            color: var(--hospital-green);
+                        } */
+
+
+                    /* .login-button {
+                        margin-top: 246px;
+                        margin-bottom: 30px;
+                        padding: 0;
+                    } */
+
+                    /* .button-aux-text {
+                        font-size: 12px;
+                        color: #797979;
+                        justify-self: center;
+                        margin-top: 0;
+                        margin-bottom: 14px;
+                    } */
+
+                    /* .secondary-button {
+                        background-color: rgba(255, 255, 255, 0);
+                        border-radius: 8px;
+                        border: none;
+                        color: var(--hospital-green);
+                        outline: var(--hospital-green) solid 1px;
+                        width: 100%;
+                        cursor: pointer;
+                        font-size: var(--md);
+                        font-weight: bold;
+                        height: 44px;
+                    } */
+
+                    /* .signup-button {
+                        margin-top: 246px;
+                        margin-bottom: 24px;
+                    } */
+
+        @media (min-width: 640px) {
+
+            .nav-right__signin {
+                display: inherit;
+            }
+        }
+        
+        @media (min-width: 640px) and (max-width: 1000px) {
+
+            .form-container {
+                width: 100%;
+            }
+
+            .logo {
+                display: inherit;
+            }
+
+            .main-content {
+                width: 100%;
+                height: auto;
+            }
+
+            /* .signup-button {
+                margin-top: 138px;
+            } */
+
+            .catalogue {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+                grid-auto-flow: row;
+
+            }
+        }
+
+        @media (min-width: 1000px) {
+
+            .form-container {
+                width: 100%;
+            }
+
+            .categories--nav {
+                display: flex;
+                justify-content: space-between; 
+            }
+
+            .categories {
+                display: none;
+            }
+
+            .search-box {
+                margin: 12px 0px;
+            }
+
+            .sort {
+                margin-top: 12px;
+            }
+
+            .logo {
+                display: inherit;
+            }
+
+            .main-content {
+                width: 100%;
+                height: auto;
+            }
+
+            /* .signup-button {
+                margin-top: 138px;
+            } */
+
+            .catalogue {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                gap: 20px;
+                grid-auto-flow: row;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login">
+
+
+        <div class="form-container">
+
+            <nav class="nav-main">
+
+                <div class="nav-left">
+
+                    <img src="./Assets/Icons/icon_menu.svg" alt="menu" class="menu">
+                    <img src="./Assets/Logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+                        <div class="categories--nav">
+        
+                        <div class="category category--selected">
+                            <p class="category-type">All</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Clothes</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Electronics</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Furniture</p>
+                        </div>
+        
+                        <!-- <div class="category">
+                            <p class="category-type">Toys</p>
+                        </div> -->
+        
+                    </div>
+
+                </div>
+
+                <div class="nav-right">
+
+                <p class="nav-right__signin">Sign in</p>
+                <!-- <img src="./Assets/Icons/icon_shopping_cart.svg" alt="cart" class="cart"> -->
+                <img src="./Assets/Icons/icon_shopping_cart_notification.svg" alt="cart" class="cart-notified">
+
+                </div>
+
+            </nav>
+
+            <div class="content">
+
+                <input type="text" name="" id="searchbox" placeholder="Search product" class="search-box">
+            
+                <div class="categories">
+    
+                    <div class="category category--selected">
+                        <p class="category-type">All</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Clothes</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Electronics</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Furniture</p>
+                    </div>
+    
+                    <!-- <div class="category">
+                        <p class="category-type">Toys</p>
+                    </div> -->
+    
+                </div>
+    
+                <div class="main-content">
+    
+                    <div class="sort">
+                        <p class="sort-p">Order:</p>
+                        <select name="" id="" class="sort-select">
+                            <option value="">Most popular</option>
+                            <option value="">Most cheap</option>
+                            <option value="">Most expensive</option>
+                            <option value="">Most recent</option>
+                        </select>
+                    </div>
+    
+                    <div class="catalogue">
+    
+                        <div class="catalogue-item">
+
+                            <div class="catalogue-item__header">
+                                <div class="cart-item--removed">
+                                    <p class="cart-item__text--removed">Removed</br>from cart</p>
+                                </div>
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+                            </div>
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Retro refrigerator</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_added_to_cart.svg" alt="item__cart" class="catalogue-item__cart-added">
+    
+                            </div>
+    
+                        </div>
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+                    </div>
+    
+                </div>
+                
+                    <!-- <h1 class="title">My account</h1> -->
+                    <!-- <p class="subtitle">Enter a new password for your account</p> -->
+                    <!-- <form action="/" class="form">
+                        <label for="name" class="label">Name</label>
+                        <input type="text" name="" id="name" placeholder="Your name" class="input input-name">
+                        <p class="info info-name">Your name</p>
+                        <label for="email" class="label">Email address</label>
+                        <input type="email" name="" id="email" placeholder="example@example.com" class="input input-email">
+                        <p class="info info-name">example@example.com</p>
+                        <label for="new-password" class="label">Password</label>
+                        <input type="password" name="" id="new-password" placeholder="********" class="input input-password">
+                        <p class="info info-password">********</p>
+                    
+                    </form> -->
+                    <!-- <input type="submit" class="primary-button login-button" value="Create"> -->
+                    <!-- <p class="button-aux-text"><a href="" class="brand-link">Forgot my password</a></p> -->
+                    <!-- <input type="submit" class="secondary-button signup-button" value="Edit"> -->
+
+            </div>     
+        </div>
+    </div>
+</body>
+
+</html>

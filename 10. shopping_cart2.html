@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <title>shopping_cart2</title>
+
+    <style data-styleSet="general">
+
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --very-light-pink: #9c9999;
+            --text-input-field: #F7F7F7;
+            --hospital-green: #ACD9B2;
+            --sm: 14px;
+            --md: 16px;
+            --lg: 18px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+    </style>
+
+    <style data-styleSet="main-structure">
+
+        .login {
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+            .form-container {
+                display: flex;
+                flex-flow: column;
+                width: auto;
+                /* border-radius: 32px; */
+                box-shadow: 3px 3px 3px 2px rgba(100, 100, 100, 0.3);
+                justify-items: center;
+                overflow: hidden;
+                position: relative;
+            }
+
+    </style>
+
+    <!-- <style data-styleSet="menu-mobile">
+
+                .menu-mobile-container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    position: absolute;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--white);
+                    box-sizing: border-box;
+                    padding: 20px;
+                }
+                
+                    .menu-mobile__close-svg {
+                        width: 12px;
+                        justify-self: right;
+                        cursor: pointer;
+                    }
+
+                    .menu-mobile-logged {
+                        /* width: 100%; */
+                        /* height: 100%; */
+                        display: flex;
+                        flex-flow: column;
+                        justify-content: space-between;
+                    }
+
+                        .menu-mobile-logged__categories,
+                        .menu-mobile-logged__action-list,
+                        .menu-mobile-logged__footer {
+                            color: var(--black);
+                            font-size: var(--md);
+                            font-weight: bold;
+                            list-style: none;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 36px;
+                            margin: 20px;
+                        }
+
+                        .menu-mobile-logged__categories {
+                            
+                        }
+
+                            .menu-mobile-logged__category {
+                                cursor: pointer;
+                            }
+
+                        .menu-mobile-logged__action-list {
+                            border-top: 1px solid #9c999928;
+                            padding-top: 40px;
+                        }
+
+                            .menu-mobile-logged__action {
+                                cursor: pointer;
+                            }
+
+                        .menu-mobile-logged__footer {
+                            gap: 6px;
+                            font-size: var(--sm);
+                        }
+
+                            .menu-mobile-logged__email {
+                                font-weight: 300;
+                            }
+
+                            .menu-mobile-logged__signout {
+                                color: var(--hospital-green);
+                                font-weight: 700;
+                                cursor: pointer;
+                            }
+
+
+    </style> -->
+
+    <style data-styleSet="nav">
+
+                .nav-main {
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.046805);
+                    display: flex;
+                    width: 100%;
+                    margin-bottom: 12px;
+                    padding: 16px 20px;
+                    box-sizing: border-box;
+                    /* background: red; */
+                    /* overflow: hidden; */
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                    .nav-left {
+                        display: flex;
+                        gap: 40px;
+                    }
+
+                        .menu {
+                            width: 24px;
+                            cursor: pointer;
+                            /* margin-bottom: 48px; */
+                            /* justify-self: center; */
+                            /* display: none; */
+                        }
+
+                        .logo {
+                            width: 96px;
+                            /* margin-bottom: 48px; */
+                            justify-self: center;
+                            display: inherit;
+                            display: none;
+                        }
+
+                        .categories--nav {
+                            display: none;
+                        }
+                    
+                    .nav-info__text {
+                        display: inherit;
+                        color: var(--black);
+                        font-weight: bold;
+                        margin: 0;
+                        padding: 0;
+
+                    }
+                    
+                    
+                    .nav-right {
+                        display: flex;
+                        gap: 40px;
+                    }
+
+                        .nav-right__signin {
+                            display: none;
+                            color: var(--hospital-green);
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        .nav-right__logged-menu {
+                            display: none;
+                            gap: 8px;
+                            position: relative; 
+                        }
+
+                            .nav-right__user-email {
+                                color: rgb(0, 0, 0);
+                                font-size: var(--sm);
+                                font-weight: 300;
+                                margin: 0;
+                                padding: 0;
+                                align-self: center;
+                                /* line-height: 10px; */
+                                cursor: pointer;
+                            }
+
+                            .nav-right__user-email-arrow {
+                                width: 6px;
+                                transform: rotate(90deg);
+                                cursor: pointer;              
+                            }
+
+                            .logged-menu-container {
+                                position: absolute;
+                                top: 48px;
+                                right: 0;
+                                background-color: var(--white);
+                                border-radius: 6px;
+                                box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.119789);
+                                z-index: 1;
+                            }
+
+                                .logged-menu {
+                                    padding: 0;
+                                    margin: 24px;
+                                }
+
+                                   .logged-menu__item,
+                                   .logged-menu__item-signout {
+                                       text-decoration: none;
+                                       font-size: var(--md);
+                                       font-weight: bold;
+                                       list-style: none;
+                                       padding: 0;
+                                       margin: 30px 0;
+                                       text-align: end;
+                                       cursor: pointer;
+                                   }
+
+                                   .logged-menu__item-signout {
+                                       border-top: 1px solid #9c999928;
+                                       padding-top: 20px;
+                                       color: var(--hospital-green);
+                                       font-weight: normal;                                   
+                                   }
+
+
+                        /* .cart {
+                            cursor: pointer;
+                            width: 24px;
+                            margin-bottom: 48px;
+                            justify-self: center;
+                            display: none;
+                        } */
+
+                        .cart-notified {
+                            width: 28px;
+                            cursor: pointer;
+                            /* margin-bottom: 48px; */
+                            /* justify-self: center; */
+                            /* display: none; */
+                        }
+
+    </style>
+
+    <style data-styleSet="page-content">
+
+                .main-content {
+                    display: grid;
+                    max-height: 600px;
+                    justify-items: center;                
+                    padding: 22px 18px;
+                    padding-top: 0px;
+                }
+
+                .content {
+                    display: grid;
+                    justify-items: center;
+                    position: relative;
+                }
+
+    </style>
+
+    <style data-styleSet="search-box">
+
+                .search-box {
+                    background-color: var(--text-input-field);
+                    font-family: 'Quicksand';
+                    font-style: normal;
+                    font-size: var(--md);
+                    width: 339px;
+                    border: none;
+                    border-radius: 10px;
+                    height: 42px;
+                    margin-bottom: 16px;
+                    color: #797979;
+                    text-align: center;
+                }
+
+    </style>
+
+    <style data-styleSet="categories">
+                    
+                .categories {
+                    width: 348px;
+                    display: flex;
+                    justify-content: space-between;            
+                }
+
+                    .category {
+                        width: auto;
+                    }
+
+                        .category-type {
+                            margin: 4px 12px;
+                            color: #C7C7C7;
+                            font-size: var(--md);
+                            font-weight: 500;
+                        }
+
+
+                    .category--selected {
+                        outline: 1px solid var(--hospital-green);
+                        border-radius: 10px;
+                    }
+
+    </style>
+
+    <style data-styleSet="sorting">
+
+                    .sort {
+                        margin: 24px 0px;
+                    }
+
+                        .sort-p {
+                            font-size: var(--sm);
+                            color: black;
+                            font-weight: bold;
+                            display: inline;
+                            margin: 0;
+                        }
+
+                        .sort-select {
+                            border: 0;
+                            background: none;
+                            font-size: var(--sm);
+                            font-family: 'Quicksand', sans-serif;
+                            font-weight: 400;
+                            cursor: pointer;
+                        }
+    
+    </style>
+
+    <!-- <style data-styleSet="product-details">
+
+        
+        .product-details-container {
+            position: absolute;
+            /* display: grid; */
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: var(--white);
+        }
+
+            .product-details {
+                display: grid;
+                position: absolute;
+            }
+
+                .product-details__header {
+                    display: grid;
+                    grid-auto-flow: row;
+                    width: 100%;
+                    position: relative;
+                    margin-bottom: 24px;
+                }
+
+                    .product-details__button-close {
+                        display: grid;
+                        margin: 12px;
+                        border-radius: 50%;
+                        z-index: 3;
+                        position: absolute;
+                        width: 40px;
+                        height: 40px;
+                        background-color: var(--white);
+                        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+                    }
+
+                        .product-details__button-close-img {
+                            place-self: center;
+                            width: 12px;
+                        }
+
+
+                    .product-details__img {
+                        width: 100%;
+                        margin-bottom: 12px;
+                        border-radius: 0 0 20px 20px;
+                    }
+
+
+                    .product-details__img-selector {
+                        display: flex;
+                        gap: 4px;
+                        justify-content: center;
+                    }
+
+                        .product-details__img-selector-unit,
+                        .product-details__img-selector-unit--selected {
+                            border-radius: 50%;
+                            width: 8px;
+                            height: 8px;
+                            background-color: hsla(0, 0%, 78%, 0.25);
+                        }
+
+                        .product-details__img-selector-unit--selected {
+                            background-color: hsl(0, 0%, 78%);
+                        }
+
+
+                .product-details__footer {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    .product-details__info {
+                        padding: 0 18px;
+                    }
+
+                        .product-details__price,
+                        .product-details__title,
+                        .product-details__description {
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                        .product-details__price {
+                            font-size: var(--lg);
+                            font-weight: 700;
+                            color: #404040;
+                            font-family: 'Roboto', sans-serif;
+                            margin-bottom: 6px;
+                        }
+
+                        .product-details__title {
+                            font-size: var(--lg);
+                            font-weight: 400;
+                            color: #797979;
+                            margin-bottom: 20px;
+                        }
+
+                        .product-details__description {
+                            font-size: var(--md);
+                            font-weight: 400;
+                            color: #797979;
+                            margin-bottom: 40px;
+                        }
+
+                    
+                    .produt-details__button {
+                        display: flex;
+                        justify-content: center;
+                        align-self: center;
+                        width: 340px;
+                        background-color: var(--hospital-green);
+                        border-radius: 10px;
+                        gap: 10px;
+                        margin-bottom: 22px;
+                    }
+
+                        .product-details__button-svg {
+                            filter: invert(100%);
+                        }
+
+                        .product-details__button-text{
+                            font-size: var(--lg);
+                            color: var(--white);
+                        }
+
+   
+    </style> -->
+
+    <style data-styleSet="shopping-cart">
+
+        .shopping-cart-container {
+            /* display: grid; */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: white;
+            padding: 16px 18px 20px;
+            box-sizing: border-box;
+        }
+
+            .shopping-cart {
+                display: grid;
+
+            }
+
+                .shopping-cart__title {
+                    padding-left: 8px;
+                    box-sizing: border-box;
+                    display: none;
+                    gap: 24px;
+                    width: 100%;
+                }
+
+                    .shopping-cart__title-img {
+                        width: 24px;
+                    }
+
+                    .shopping-cart__title-text {
+                        font-weight: 700;
+                        font-size: 18px;
+                    }
+
+            
+                .shopping-cart__items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    align-items: center;
+                    margin-bottom: 24px;
+                }
+
+                    .shopping-cart__item-deleted{
+                        width: 100%;
+                        display: flex;
+                        /* justify-content: space-between; */
+                        align-items: center;
+                        position: relative;
+                        gap: 18px;
+                    }
+                    
+                    .shopping-cart__item {
+                        width: 100%;
+                        display: flex;
+                        /* justify-content: space-between; */
+                        align-items: center;
+                        position: relative;
+                        gap: 18px;
+                    }
+
+                        .shopping-cart__item-deleted-overlay {
+                            position: absolute;
+                            width: 100%;
+                            top: 0;
+                            left: 0;
+                            background-color: hsla(0, 0%, 85%, 0.16);
+                            height: 100%;
+                            border-radius: 20px;
+                        }
+
+                        .shopping-cart__item-deleted-text {
+                            opacity: 16%;
+                            font-size: var(--md);
+                            font-weight: 500;
+                            color: #797979;;
+                        }
+
+                        .shopping-cart__item-img-deleted {
+                            width: 76px;
+                            border-radius: 20px;
+                            opacity: 24%;
+                            
+                        }
+
+                        .shopping-cart__item-img {
+                            width: 76px;
+                            border-radius: 20px;
+                            
+                        }
+
+                        .shopping-cart__item-text {
+                            font-size: var(--sm);
+                            font-weight: 400;
+                            color: #797979;;
+                        }
+
+                        .shopping-cart__item-price {
+                            font-size: var(--md);
+                            font-weight: 700;
+                            color: #404040;
+                            font-family: 'Roboto', sans-serif;
+                            margin-left: auto;
+                        }
+
+                        .shopping-cart__item-delete {
+                            width: 12px;
+                            margin-right: 8px;
+                        }
+
+                
+                .shopping-cart__total {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: #F7F7F7;
+                    border-radius: 10px;
+                    padding: 18px;
+                    margin-bottom: 18px;
+                }
+
+                    .shopping-cart__total-text {
+                        font-size: var(--md);
+                        font-weight: bold;
+                        color: var(--black);
+                    }
+
+                    .shopping-cart__total-price {
+                        font-size: var(--md);
+                        font-weight: 700;
+                        color: #404040;
+                        font-family: 'Roboto', sans-serif;
+                    }
+
+
+                .shopping-cart__button {
+                    display: flex;
+                    place-content: center;
+                    width: 340px;
+                    background-color: var(--hospital-green);
+                    border-radius: 10px;
+                    margin-bottom: 22px;
+                }
+
+                    .shopping-cart_button-text {
+                        font-size: var(--lg);
+                        color: var(--white);
+                    }
+
+
+
+    </style>
+
+    <!-- <style data-styleSet="all-orders">
+                    
+                    .all-orders-container {
+                        width: 339px;
+                    }
+
+                        .all-orders__title {
+                            display: none;
+                            color: var(--black);
+                            font-weight: bold;
+                            margin: 0;
+                            margin-bottom: 44px;
+                            padding: 0;
+                        }
+
+                        .all-orders {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 28px;
+                            margin-top: 24px;
+                        }
+
+                            .all-orders__order {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding-right: 10px;
+                            }
+                            
+                                .all-orders__left {
+                                    display: flex;
+                                    flex-flow: column;
+                                    gap: 4px;
+                                }
+
+                                    .all-orders__date {
+                                        padding: 0;
+                                        margin: 0;
+                                        font-weight: 700;
+                                        font-size: var(--md);
+                                    }
+
+                                    .all-orders__articles {
+                                        padding: 0;
+                                        margin: 0;
+                                        font-size: var(--sm);
+                                        font-weight: 400;
+                                        color: #797979;
+                                    }
+                                
+                                .all-orders__price {
+                                    padding: 0;
+                                    margin: 0 24px 0 auto;
+                                    
+                                    font-size: var(--md);
+                                    font-weight: 700;
+                                    color: #404040;
+                                    font-family: 'Roboto', sans-serif;
+                                    cursor: pointer;
+                                }
+
+                                .all-orders__arrow {
+                                    width: 8px;
+                                    cursor: pointer;
+                                }
+
+    </style> -->
+
+    <!-- <style data-styleSet="order-detail">                     
+
+                    .orders-container{
+                        width: 339px;
+                    }
+                        
+                        .order-title {
+                            display: none;
+                            color: var(--black);
+                            font-weight: bold;
+                            margin: 0;
+                            margin-bottom: 44px;
+                            padding: 0;
+                        }
+
+                        .order-recap-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            background-color: #F7F7F7;
+                            border-radius: 10px;
+                            padding: 18px;
+                            margin-top: 4px;
+                            margin-bottom: 20px;
+                        }
+
+                            .order-recap__left {
+                                display: flex;
+                                flex-flow: column;
+                                gap: 4px;
+                            }
+
+                                .order-recap__date {
+                                    padding: 0;
+                                    margin: 0;
+                                    font-weight: 700;
+                                    font-size: var(--md);
+                                }
+
+                                .order-recap__articles {
+                                    padding: 0;
+                                    margin: 0;
+                                    font-size: var(--sm);
+                                    font-weight: 400;
+                                    color: #797979;
+                                }
+
+                            .order-recap__price {
+                                padding: 0;
+                                margin: 0;
+                                font-size: var(--md);
+                                font-weight: 700;
+                                color: #404040;
+                                font-family: 'Roboto', sans-serif;
+                            }
+                            
+                        
+                        .orders {
+                            display: flex;
+                            flex-flow: column;
+                            gap: 24px;
+                        }
+
+                            .order-item{
+                                display: flex;
+                                flex-flow: row;
+                                align-items: center;
+                                gap: 16px;
+                            }
+
+                                .order-item__image {
+                                    border-radius: 20px;
+                                    width: 76px;
+                                }
+
+                                .order-item__text {
+                                    font-size: var(--sm);
+                                    font-weight: 400;
+                                    color: #797979;;
+                                }
+
+                                .order-item__price {
+                                    margin-right: 18px;
+                                    margin-left: auto;
+                                    font-size: var(--md);
+                                    font-weight: 700;
+                                    color: #404040;
+                                    font-family: 'Roboto', sans-serif;
+                                }
+                    
+    </style> -->
+
+    <style data-styleSet="catalogue">
+
+                    .catalogue {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 20px;
+                        grid-auto-flow: row;
+                    }
+
+                        .catalogue-item {
+                            /* background-color: red; */
+                            /* overflow: hidden; */
+                            /* display: grid; */
+                            display: grid;
+                            position: relative;
+                        }
+                            
+                            .catalogue-item__header {
+                                display: grid;
+                                position: relative;
+                            }
+
+                                .cart-item--removed{
+                                    background-color: rgba(255, 255, 255, 0.8);
+                                    width: calc(100% - 8px);
+                                    height: 40px;
+                                    position: absolute;
+                                    z-index: 1;
+                                    align-self: center;
+                                    justify-self: center;
+                                    border-radius: 10px;
+                                    display: grid;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                .cart-item__text--removed {
+                                    font-size: var(--sm);
+                                    font-weight: 500;
+                                    margin: 0;
+                                    padding: 0;
+                                    
+                                }
+
+                                .catalogue-item__image {
+                                    width: 164px;
+                                    height: 164px;
+                                    border-radius: 20px;
+                                    filter: drop-shadow(0px 0px 15px rgba(199, 199, 199, 0.5));
+                                    
+                                }
+
+                                
+                            .catalogue-item__footer {
+                                display: grid;
+                                grid-auto-flow: column;
+                                justify-content: space-between;
+                                align-items: end;
+                            }
+
+                                .catalogue-item__info{
+                                    display: grid;
+                                    grid-auto-flow: row;
+                                }
+
+                                    .catalogue-item__price {
+                                        font-size: var(--md);
+                                        font-weight: 700;
+                                        color: #404040;
+                                        font-family: 'Roboto', sans-serif;
+                                        margin-top: 11px;
+                                        margin-bottom: 2px;
+                                        /* justify-self: left; */
+                                    }
+
+                                    .catalogue-item__name {
+                                        font-size: var(--sm);
+                                        font-weight: 400;
+                                        color: #797979;;
+                                        margin: 0;
+                                    }
+
+
+                                .catalogue-item__cart {
+                                    width: 40px;
+                                    margin: 0;
+                                    /* justify-self: right; */
+                                    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.15));
+                                }
+
+                                .catalogue-item__cart-added {
+                                    width: 40px;
+                                    margin: 0;
+                                    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.15));
+                                    /* align-self: right; */
+                                }                   
+
+    </style>
+
+    <!-- <style data-styleSet="forms">
+
+                    .title {
+                        font-size: var(--lg);
+                        margin-top: 0px;
+                        margin-bottom: 48px;
+                        text-align: center;
+                        justify-self: left;
+                    }
+
+                    .subtitle {
+                        color: var(--very-light-pink);
+                        font-size: var(--md);
+                        font-weight: 300;
+                        margin-top: 0;
+                        margin-bottom: 32px;
+                        text-align: center;
+                    }
+
+
+                    .form {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                    }
+
+                        .label {
+                            font-size: var(--sm);
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        .input {
+                            background-color: var(--text-input-field);
+                            border: none;
+                            border-radius: 10px;
+                            height: 28px;
+                            font-size: var(--md);
+                            padding: 8px;
+                            margin-bottom: 26px;
+                            color: #797979;
+                        }
+
+                        .info {
+                            font-size: var(--md);
+                            margin-top: 0;
+                            margin-bottom: 42px;
+                            color: #797979;
+                        }
+
+
+                    .primary-button {
+                        background-color: var(--hospital-green);
+                        border-radius: 8px;
+                        border: none;
+                        color: var(--white);
+                        width: 100%;
+                        cursor: pointer;
+                        font-size: var(--md);
+                        font-weight: bold;
+                        height: 44px;
+                    } 
+                   
+
+                        .brand-link {
+                            text-decoration: none;
+                            color: var(--hospital-green);
+                        }
+
+
+                    .login-button {
+                        margin-top: 246px;
+                        margin-bottom: 30px;
+                        padding: 0;
+                    }
+
+                    .button-aux-text {
+                        font-size: 12px;
+                        color: #797979;
+                        justify-self: center;
+                        margin-top: 0;
+                        margin-bottom: 14px;
+                    }
+
+                    .secondary-button {
+                        background-color: rgba(255, 255, 255, 0);
+                        border-radius: 8px;
+                        border: none;
+                        color: var(--hospital-green);
+                        outline: var(--hospital-green) solid 1px;
+                        width: 100%;
+                        cursor: pointer;
+                        font-size: var(--md);
+                        font-weight: bold;
+                        height: 44px;
+                    }
+
+                    .signup-button {
+                        margin-top: 246px;
+                        margin-bottom: 24px;
+                    }
+
+    </style> -->
+
+    <style data-styleSet="media-quey">
+
+        @media (min-width: 640px) { 
+
+            .login {
+                height: auto;
+            }
+
+            .nav-right__signin {
+                display: inline-block;
+            }
+
+            .nav-right__logged-menu {
+                display: flex;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .menu-mobile-container {
+                display: none;
+            }
+
+            .order-title {
+                display: inherit;
+            }
+
+            .all-orders-container {
+                width: 404px;
+                padding: 80px 0px;
+            }
+
+            .all-orders__title {
+                display: inherit;
+            }
+            
+            .nav-info__text {
+                display: none;
+            }
+
+            .orders-container {
+                width: 404px;
+                margin: 52px 0px;
+            }
+
+            .main-content {
+                display: grid;
+                max-height: none;
+                /* justify-items: center;                 */
+                /* padding: 22px 18px; */
+                /* padding-top: 0px; */
+            }
+
+            .categories--nav {
+                display: flex;
+                justify-content: space-between; 
+            }
+
+            .product-details-container {
+                position: absolute;
+                overflow: hidden;
+                width: 400px;
+                right: 0;
+                top: -12px;
+                box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.119789);
+                border-radius: 5px;
+            }
+
+            .shopping-cart-container {
+                position: absolute;
+                overflow: hidden;
+                width: 400px;
+                right: 0;
+                top: -10px;
+                box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.119789);
+                border-radius: 5px;
+            }
+
+            .shopping-cart__title {
+                display: flex;
+            }
+
+            .shopping-cart__item-deleted {
+                display: none;
+            }
+
+            .content {
+                padding-bottom: 150px;
+            }
+        }
+        
+        @media (min-width: 640px) and (max-width: 1000px) {
+
+            .form-container {
+                width: 100%;
+            }
+
+            .logo {
+                display: inherit;
+            }
+
+            .main-content {
+                width: 100%;
+                height: auto;
+            }
+
+            /* .signup-button {
+                margin-top: 138px;
+            } */
+
+            .catalogue {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+                grid-auto-flow: row;
+
+            }
+        }
+
+        @media (min-width: 1000px) {
+
+            .form-container {
+                width: 100%;
+            }
+
+            /* .categories--nav {
+                display: flex;
+                justify-content: space-between; 
+            } */
+
+            .categories {
+                display: none;
+            }
+
+            .search-box {
+                margin: 12px 0px;
+            }
+
+            .sort {
+                margin-top: 12px;
+            }
+
+            .logo {
+                display: inherit;
+            }
+
+            .main-content {
+                width: 100%;
+                height: auto;
+            }
+
+            /* .signup-button {
+                margin-top: 138px;
+            } */
+
+            .catalogue {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                gap: 20px;
+                grid-auto-flow: row;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login">
+
+
+        <div class="form-container">
+
+            <!-- <div class="menu-mobile-container">
+                
+                
+                <div class="menu-mobile-logged">
+                    
+
+                    <ul class="menu-mobile-logged__categories">CATEGORIES
+
+                        <li class="menu-mobile-logged__category">All</li>
+                        <li class="menu-mobile-logged__category">Clothes</li>
+                        <li class="menu-mobile-logged__category">Electronics</li>
+                        <li class="menu-mobile-logged__category">Furnitures</li>
+                        <li class="menu-mobile-logged__category">Toys</li>
+                        <li class="menu-mobile-logged__category">Others</li>
+
+                    </ul>
+
+                    <ul class="menu-mobile-logged__action-list">
+                        
+                        <li class="menu-mobile-logged__action">My orders</li>
+                        <li class="menu-mobile-logged__action">My account</li>
+                    
+                    </ul>
+
+                    <div class="menu-mobile-logged__footer">
+
+                        <li class="menu-mobile-logged__email">example@example.com</li>
+                        <li class="menu-mobile-logged__signout">Sign out</li>
+
+                    </div>
+                </div>
+
+                <img src="./Assets/Icons/icon_close.png" alt="close" class="menu-mobile__close-svg">
+
+            </div> -->
+
+            <nav class="nav-main">
+
+                <div class="nav-left">
+
+                    <img src="./Assets/Icons/icon_menu.svg" alt="menu" class="menu">
+                    <img src="./Assets/Logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+                        <div class="categories--nav">
+        
+                        <div class="category category--selected">
+                            <p class="category-type">All</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Clothes</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Electronics</p>
+                        </div>
+        
+                        <div class="category">
+                            <p class="category-type">Furniture</p>
+                        </div>
+        
+                        <!-- <div class="category">
+                            <p class="category-type">Toys</p>
+                        </div> -->
+        
+                    </div>
+
+                </div>
+
+                <p class="nav-info__text">Shopping cart</p>
+
+                <div class="nav-right">
+                
+                
+                <div class="nav-right__logged-menu">
+
+                    <p class="nav-right__user-email">example@example.com</p>
+                    <img src="./Assets/Icons/flechita.svg" alt="cart" class="nav-right__user-email-arrow">
+
+                    <!-- <div class="logged-menu-container">
+                        <ul class="logged-menu">
+                            <li class="logged-menu__item">My orders</li>
+                            <li class="logged-menu__item">My account</li>
+                            <li class="logged-menu__item">Help</li>
+                            <li class="logged-menu__item-signout">Sign out</li>
+                        </ul>
+                    </div> -->
+
+                </div>
+
+                <!-- <p class="nav-right__signin">Sign in</p> -->
+                <!-- <img src="./Assets/Icons/icon_shopping_cart.svg" alt="cart" class="cart"> -->
+                <img src="./Assets/Icons/icon_shopping_cart_notification.svg" alt="cart" class="cart-notified">
+
+                </div>
+
+            </nav>
+
+            <div class="content">
+
+                <div class="shopping-cart-container">
+
+                    <div class="shopping-cart">
+
+                        <div class="shopping-cart__items">
+
+                            <div class="shopping-cart__title">
+                                <img src="./Assets/Icons/big arrow.svg" alt="exit" class="shopping-cart__title-img">
+                                <p class="shopping-cart__title-text">Shopping cart</p>
+                            </div>
+
+                            <div class="shopping-cart__item">
+
+                                <img src="./Assets/Images/round_shelf.png" alt="" class="shopping-cart__item-img">
+                                <p class="shopping-cart__item-text">Round shelf</p>
+                                <p class="shopping-cart__item-price">$ 120,00</p>
+                                <img src="./Assets/Icons/icon_close.png" alt="" class="shopping-cart__item-delete">
+
+                            </div>
+                            
+
+                            <div class="shopping-cart__item-deleted">
+
+                                <div class="shopping-cart__item-deleted-overlay"></div>
+                                <img src="./Assets/Images/round_shelf.png" alt="" class="shopping-cart__item-img-deleted">
+                                <p class="shopping-cart__item-deleted-text">REMOVED FROM CART</p>
+
+                            </div>
+
+                            <div class="shopping-cart__item">
+
+                                <img src="./Assets/Images/round_shelf.png" alt="" class="shopping-cart__item-img">
+                                <p class="shopping-cart__item-text">Round shelf</p>
+                                <p class="shopping-cart__item-price">$ 120,00</p>
+                                <img src="./Assets/Icons/icon_close.png" alt="" class="shopping-cart__item-delete">
+
+                            </div>
+
+                            <div class="shopping-cart__item">
+
+                                <img src="./Assets/Images/round_shelf.png" alt="" class="shopping-cart__item-img">
+                                <p class="shopping-cart__item-text">Round shelf</p>
+                                <p class="shopping-cart__item-price">$ 120,00</p>
+                                <img src="./Assets/Icons/icon_close.png" alt="" class="shopping-cart__item-delete">
+
+                            </div>
+
+                            <div class="shopping-cart__item">
+
+                                <img src="./Assets/Images/round_shelf.png" alt="" class="shopping-cart__item-img">
+                                <p class="shopping-cart__item-text">Round shelf</p>
+                                <p class="shopping-cart__item-price">$ 120,00</p>
+                                <img src="./Assets/Icons/icon_close.png" alt="" class="shopping-cart__item-delete">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="shopping-cart__total">
+
+                            <p class="shopping-cart__total-text">Total</p>
+                            <p class="shopping-cart__total-price">$ 560.00</p>
+
+                        </div>
+
+                        <div class="shopping-cart__button">
+                            
+                            <p class="shopping-cart_button-text">Checkout</p>
+        
+                        </div>
+
+                    </div>
+
+                </div>
+  
+
+
+                <!-- <div class="product-details-container">
+
+                    <div class="product-details">
+
+                        <div class="product-details__header">
+
+                            <div class="product-details__button-close">
+                                <img src="./Assets/Icons/icon_close.png" alt="close" class="product-details__button-close-img">
+                            </div>
+
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="product" class="product-details__img">
+
+                            <div class="product-details__img-selector">
+                                <div class="product-details__img-selector-unit--selected"></div>
+                                <div class="product-details__img-selector-unit"></div>
+                                <div class="product-details__img-selector-unit"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="product-details__footer">
+
+                            <div class="product-details__info">
+
+                                <p class="product-details__price">$ 120,00</p>
+                                <p class="product-details__title">Retro refrigerator</p>
+                                <p class="product-details__description">With its functional and practical interior, this refrigerator also fulfills a decorative function, adding personality and a retro-vintage aesthetic to your kitchen or workplace.</p>
+
+                            </div>
+
+                            <div class="produt-details__button">
+
+                                
+                                <img src="./Assets/Icons/icon_shopping_cart.svg" alt="button-cart" class="product-details__button-svg">
+                                <p class="product-details__button-text">Add to cart</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+                <input type="text" name="" id="searchbox" placeholder="Search product" class="search-box">
+            
+                <div class="categories">
+    
+                    <div class="category category--selected">
+                        <p class="category-type">All</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Clothes</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Electronics</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Furniture</p>
+                    </div>
+    
+                    <div class="category">
+                        <p class="category-type">Toys</p>
+                    </div>
+    
+                </div>
+    
+                <div class="main-content">
+
+                    
+
+                    <!-- <div class="all-orders-container">
+
+                        <p class="all-orders__title">My orders</p>
+                        
+                        <div class="all-orders">
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                            <div class="all-orders__order">
+                            
+                                <div class="all-orders__left">
+                                    <p class="all-orders__date">04.25.2021</p>
+                                    <p class="all-orders__articles">6 articles</p>
+                                </div>
+    
+                                <p class="all-orders__price">$ 560.00</p>
+                                <img src="./Assets/Icons/flechita.svg" alt="open" class="all-orders__arrow">
+                                                                
+                            </div>
+
+                        </div>
+
+                    </div> -->
+
+                    <!-- <div class="orders-container">
+
+                        <p class="order-title"> My order</p>
+
+                        <div class="order-recap-container">
+                            
+                            <div class="order-recap__left">
+                                <p class="order-recap__date">04.25.2021</p>
+                                <p class="order-recap__articles">6 articles</p>
+                            </div>
+
+                            <p class="order-recap__price">$ 560.00</p>
+                            
+                        </div>
+
+                        <div class="orders">
+
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="order-item__image">
+                                <p class="order-item__text">Round shelf</p>
+                                <p class="order-item__price">$ 120,00</p>
+                            </div>
+
+                        </div>
+
+                    </div> -->
+    
+                    <div class="sort">
+                        <p class="sort-p">Order:</p>
+                        <select name="" id="" class="sort-select">
+                            <option value="">Most popular</option>
+                            <option value="">Most cheap</option>
+                            <option value="">Most expensive</option>
+                            <option value="">Most recent</option>
+                        </select>
+                    </div>
+    
+                    <div class="catalogue">
+    
+                        <div class="catalogue-item">
+
+                            <div class="catalogue-item__header">
+                                <div class="cart-item--removed">
+                                    <p class="cart-item__text--removed">Removed</br>from cart</p>
+                                </div>
+                                <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+                            </div>
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Retro refrigerator</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_added_to_cart.svg" alt="item__cart" class="catalogue-item__cart-added">
+    
+                            </div>
+    
+                        </div>
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+                        
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/round_shelf.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+    
+                        <div class="catalogue-item">
+                            <img src="./Assets/Images/retro_refrigerator.png" alt="item" class="catalogue-item__image">
+    
+                            <div class="catalogue-item__footer">
+    
+                                <div class="catalogue-item__info">
+                                    <h1 class="catalogue-item__price">$ 120,00</h1>
+                                    <p class="catalogue-item__name">Round shelf</p>
+                                </div>
+                                
+                                <img src="./Assets/Icons/bt_add_to_cart.svg" alt="item__cart" class="catalogue-item__cart">
+    
+                            </div>
+    
+                        </div>
+
+                    </div>
+    
+                </div>
+                
+                    <!-- <h1 class="title">My account</h1> -->
+                    <!-- <p class="subtitle">Enter a new password for your account</p> -->
+                    <!-- <form action="/" class="form">
+                        <label for="name" class="label">Name</label>
+                        <input type="text" name="" id="name" placeholder="Your name" class="input input-name">
+                        <p class="info info-name">Your name</p>
+                        <label for="email" class="label">Email address</label>
+                        <input type="email" name="" id="email" placeholder="example@example.com" class="input input-email">
+                        <p class="info info-name">example@example.com</p>
+                        <label for="new-password" class="label">Password</label>
+                        <input type="password" name="" id="new-password" placeholder="********" class="input input-password">
+                        <p class="info info-password">********</p>
+                    
+                    </form> -->
+                    <!-- <input type="submit" class="primary-button login-button" value="Create"> -->
+                    <!-- <p class="button-aux-text"><a href="" class="brand-link">Forgot my password</a></p> -->
+                    <!-- <input type="submit" class="secondary-button signup-button" value="Edit"> -->
+
+            </div>     
+        </div>
+    </div>
+</body>
+
+</html>
